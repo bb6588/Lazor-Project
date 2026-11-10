@@ -53,9 +53,9 @@ def read_grid(data_only):
     for line in data_only:
         marker = line.strip().casefold()
 
-        if line == "grid start":
+        if marker == "grid start":
             part_of_grid = True
-        elif line == 'grid stop':
+        elif marker == 'grid stop':
             part_of_grid = False
         elif part_of_grid:
             filtered_grid.append(line)
