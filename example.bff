@@ -9,7 +9,7 @@ Board File Format (.bff)
 # C = fixed refract block
 
 # Grid will start at top left, being 0, 0
-# Step size is by half blocks
+# Step size is by half block
 # Thus, this leads to even numbers indicating
 # the rows/columns between blocks, and odd numbers
 # intersecting blocks.
