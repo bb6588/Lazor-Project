@@ -51,11 +51,12 @@ def read_grid(data_only):
 
     # Find the start and end of the grid and collect the rows between them
     for line in data_only:
-        if line == 'GRID START':
-            part_of_grid = True
-        elif line == 'GRID STOP':
-            part_of_grid = False
+        marker = line.strip().casefold()
 
+        if line == "grid start":
+            part_of_grid = True
+        elif line == 'grid stop':
+            part_of_grid = False
         elif part_of_grid:
             filtered_grid.append(line)
 
