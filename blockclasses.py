@@ -51,7 +51,7 @@ class GlassBlock(Block):
     returns two lasers"""
     symbol = 'C'
     def interact(self, direction, axis):
-        return [_reflect(direction, axis), direction]
+        return [reflect(direction, axis), direction]
 
 BLOCK_TYPES = {'A': ReflectBlock, 'B': OpaqueBlock, 'C': GlassBlock}
 
