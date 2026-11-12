@@ -19,12 +19,13 @@ def bff_reader(filename):
     data_only = []
 
     # Remove blank lines, comments, #, extra whitespace
+    # Also removes in-line comments
     for line in text:
+        line = line.split('#')[0]
         line = line.strip()
 
         if line != '':
-            if '#' not in line:
-                data_only.append(line)
+            data_only.append(line)
 
     if len(data_only) == 0:
         raise ValueError('The .bff file is empty.')
@@ -48,6 +49,9 @@ def read_grid(data_only):
     """
     filtered_grid = []
     part_of_grid = False
+    # Explicitly check for the presence of GRID START and GRID STOP markers
+    found_start = False
+    found_stop = False
 
     # Find the start and end of the grid and collect the rows between them
     for line in data_only:
@@ -55,10 +59,15 @@ def read_grid(data_only):
 
         if marker == "grid start":
             part_of_grid = True
+            found_start = True
         elif marker == 'grid stop':
             part_of_grid = False
+            found_stop = True
         elif part_of_grid:
             filtered_grid.append(line)
+    
+    if not found_start or not found_stop:
+        raise ValueError('Missing GRID START or GRID STOP in .bff file.')
 
     if len(filtered_grid) == 0:
         raise ValueError('No grid information found.')
@@ -66,8 +75,20 @@ def read_grid(data_only):
     board_representation = []
 
     # Separate each row into individual squares
+    # Handles multiple spaces, tabs, and converts to uppercase if lowercase in bff file
     for row in filtered_grid:
-        rows = row.split()
+        row = row.replace(' ', '')
+        row = row.replace('\t', '')
+        row = row.upper()
+        row = row.replace('O', 'o')
+        row = row.replace('X', 'x')
+
+        rows = list(row)
+
+        for block in rows:
+            if block not in ['o', 'x', 'A', 'B', 'C']:
+                raise ValueError('Invalid grid symbol.')
+
         board_representation.append(rows)
 
     for row in board_representation:
