@@ -10,8 +10,13 @@ def build_block_map(puzzle, placement):
     for symbol, row, col in puzzle['fixed_blocks']:
         blocks[(row, col)] = make_block(symbol, (row, col), fixed=True)
     for (row, col), symbol in placement.items():
-        if grid[row][col].lower() != 'o' or (row, col) in blocks:
-            raise ValueError(f'Cannot place a block at {(row, col)}')
+        # error handling for block placements that aren't physically possible
+        if not (0 <= row < len(grid) and 0 <= col < len(grid[0])):
+            raise ValueError(f'Position {(row, col)} is outside the board')
+        if (row, col) in blocks:
+            raise ValueError(f'Position {(row, col)} already has a fixed block')
+        if grid[row][col].lower() != 'o':
+            raise ValueError(f'Position {(row, col)} is not an open cell')
         blocks[(row, col)] = make_block(symbol, (row, col))
     return blocks
 
