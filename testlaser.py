@@ -1,4 +1,6 @@
-"""Test for the laser, check that it is bouncing off blocks as intended and that the win condition is being checked correctly. This test will print out the points hit by the laser and whether or not the win condition is met."
+"""Test for the laser, checks that laser works on empty board, then adds each block type to 
+ensure that placement affects win condition how we would expect (check_win should be true for 
+empty board and glass block, should be false for reflect and opaque block).
 """
 
 from laser import simulate, check_win
