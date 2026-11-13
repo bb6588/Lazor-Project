@@ -9,10 +9,6 @@ available cells (including the cells that the first block placement made availab
 """
 from laser import simulate, check_win
 
-
-
-
-
 def solve(puzzle):
     """Find a placement of the movable blocks that hits every target.
 
@@ -43,7 +39,17 @@ def _search(puzzle, placement, remaining, visited):
 
     # If we win, return solution block placement
     if check_win(puzzle, points_hit):
-        return dict(placement)
+        if sum(remaining.values()) == 0:
+            return dict(placement)
+
+        # Find additional empty squares for any remaining blocks
+        for row in range(len(puzzle['board'])):
+            for column in range(len(puzzle['board'][row])):
+                cell = (row, column)
+
+                if puzzle['board'][row][column] == 'o':
+                   if cell not in placement and cell not in candidates:
+                    candidates.append(cell)
 
     # If we can't place any more blocks, return None
     if sum(remaining.values()) == 0:
