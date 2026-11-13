@@ -1,8 +1,0 @@
-GRID START
-o o o o
-o A o o
-A o C o
-o o o o
-o o o o
-o o o o
-GRID STOP
