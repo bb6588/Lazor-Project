@@ -17,7 +17,7 @@ def build_block_map(puzzle, placement):
 
 
 def cell_ahead(x, y, vx, vy):
-    """Find the cell the laser will enter next and whether it's 
+    """Find the cell the laser will enter next and whether it's
     crossing a vertical (x) or horizontal (y) edge."""
     if x % 2 == 0:  # (vertical edge)
         col = x // 2 if vx > 0 else x // 2 - 1
@@ -30,11 +30,11 @@ def simulate(puzzle, placement):
     """Follow laser beam and record the points on grid it passes through
 
     Returns:
-        points_hit: 
+        points_hit:
             set of (x, y) half-cell coordinates visited by the laser
-        candidate_cells: 
+        candidate_cells:
             list of (row, col) cells that the laser enters, the solver
-            will try placing blocks in these cells to redirect the laser 
+            will try placing blocks in these cells to redirect the laser
             until it hits all targets.
     """
     grid = puzzle['board']
@@ -81,7 +81,7 @@ def simulate(puzzle, placement):
 
 
 def check_win(puzzle, points_hit):
-    """Check whether we hit all the targets. If all targets in the 
+    """Check whether we hit all the targets. If all targets in the
     puzzle are contained in points_hit, will return true.
     """
     return all(p in points_hit for p in puzzle['target_points'])

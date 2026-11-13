@@ -54,9 +54,9 @@ def save_solution(puzzle, solution, filename):
 
     output_file.write('\nINSTRUCTIONS:\n')
     output_file.write('Use the grid above as a guide to solve the puzzle.\n')
-    output_file.write('Place each movable block in the position shown on the grid.\n')
+    output_file.write(
+        'Place each movable block in the position shown on the grid.\n')
     output_file.write('Leave any fixed blocks in their original positions.\n')
     output_file.write('Refer to the key above to identify each block type.\n')
 
     output_file.close()
-
