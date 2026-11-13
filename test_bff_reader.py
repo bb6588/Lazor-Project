@@ -1,7 +1,13 @@
-from bffreader import puzzle_information
-b = puzzle_information('tricky_1.bff')
-print(b['moveable_blocks'])
-print(b['board'][0])
+"""Test for bffreader.py. Will print symbols for available movable blocks and board layout, and
+specify if there are fixed blocks/which blocks are fixed.
+"""
 
-#print(puzzle_information('mad_4.bff'))
-#print(puzzle_information('mad_5.bff'))
+from bffreader import puzzle_information
+b = puzzle_information('example.bff')
+print(b['moveable_blocks'])
+if b['fixed_blocks']:
+    print(b['fixed_blocks'])
+else:
+    print('No fixed blocks')
+for row in b['board']:
+    print(row)

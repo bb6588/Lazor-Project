@@ -65,7 +65,7 @@ def read_grid(data_only):
             found_stop = True
         elif part_of_grid:
             filtered_grid.append(line)
-    
+
     if not found_start or not found_stop:
         raise ValueError('Missing GRID START or GRID STOP in .bff file.')
 
@@ -75,7 +75,8 @@ def read_grid(data_only):
     board_representation = []
 
     # Separate each row into individual squares
-    # Handles multiple spaces, tabs, and converts to uppercase if lowercase in bff file
+    # Handles multiple spaces, tabs, and converts to uppercase if lowercase in
+    # bff file
     for row in filtered_grid:
         row = row.replace(' ', '')
         row = row.replace('\t', '')
