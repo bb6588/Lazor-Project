@@ -43,5 +43,20 @@ def save_solution(puzzle, solution, filename):
         output_file.write(row_text + '\n')
 
     output_file.write('GRID STOP\n')
+
+    # Explanation of symbols used in the output file
+    output_file.write('\nKEY:\n')
+    output_file.write('A: Reflective block\n')
+    output_file.write('B: Opaque block\n')
+    output_file.write('C: Refractive block\n')
+    output_file.write('o: Empty square where a moveable block can be placed\n')
+    output_file.write('x: Unavailable square where a block cannot be placed\n')
+
+    output_file.write('\nINSTRUCTIONS:\n')
+    output_file.write('Use the grid above as a guide to solve the puzzle.\n')
+    output_file.write('Place each movable block in the position shown on the grid.\n')
+    output_file.write('Leave any fixed blocks in their original positions.\n')
+    output_file.write('Refer to the key above to identify each block type.\n')
+
     output_file.close()
 
