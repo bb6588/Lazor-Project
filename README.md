@@ -93,17 +93,27 @@ If a solution is found, it calls `output.py` to generate a text file containing 
 
 ### `test_bff_reader.py`
 
-This file contains tests for `bffreader.py` to verify that the program correctly reads and interprets the information provided in `.bff` files. To run, open folder in terminal and enter:
-   python test_bff_reader.py
+This file contains tests for `bffreader.py` to verify that the program correctly reads and interprets the information provided in `.bff` files. To run, open the folder in a terminal and enter:
+
+```bash
+python test_bff_reader.py
+```
 
 ### 'testlaser.py'
 
-This file tests laser.py and the block classes in blockclasses.py by checking that the laser bounces off the different block types as intended. To run, enter from terminal:
-   python testlaser.py
+This file tests `laser.py` and the block classes in `blockclasses.py` by checking that the laser bounces off the different block types as intended. To run, enter in a terminal:
 
-### 'testsolver.py'
-Test solver.py by making sure it gives the intended output (check_win=True) for example.bff. To run, open folder in terminal and enter: 
-   python testsolver.py
+```bash
+python testlaser.py
+```
+
+### `testsolver.py`
+
+Test `solver.py` by making sure it gives the intended output (`check_win=True`) for `example.bff`. To run, open the folder in a terminal and enter:
+
+```bash
+python testsolver.py
+```
 
 ## Authors
 
