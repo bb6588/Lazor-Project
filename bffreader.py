@@ -200,7 +200,11 @@ def lazor_information(data_only):
 
     if len(starting_positions) == 0:
         raise ValueError('No lasers found.')
-
+    for (x,y) (vx, vy) in zip(starting_positions, initial_direction):
+        if (x + y) % 2 == 0:
+            raise ValueError('Laser must start on a block edge.')
+        if (vx, vy) not in [(1, 0), (-1, 0), (0, 1), (0, -1)]:
+            raise ValueError('Invalid laser direction.')
     return starting_positions, initial_direction
 
 
